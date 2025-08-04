@@ -128,17 +128,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="GolfCourse.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Personal.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="Terminal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="FileIO.h" />
     <ClInclude Include="global.h" />
     <ClInclude Include="GolfCourse.h" />
     <ClInclude Include="Personal.h" />
     <ClInclude Include="Score.h" />
+    <ClInclude Include="Terminal.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

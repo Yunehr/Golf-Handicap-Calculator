@@ -7,3 +7,14 @@
 //		- display round final score based on course handicap
 //
 
+#include <iostream>
+#include "Terminal.h"
+
+int main(void) {
+
+	int score = Terminal::getScore();
+
+	std::cout << "Given score: " << score << std::endl;
+
+	return 0;
+}

@@ -20,8 +20,10 @@ public:
 	std::string getName();
 
 	void addScore(Score S);
+	double getAvgDiff();
 	void updateHdcp(double hdcp);
 
+	int writeScores(std::ofstream& fout);
 	//TODO: printPerson (name, handicap avg, (Optional* maybe add most played course Optional*)
 
 };

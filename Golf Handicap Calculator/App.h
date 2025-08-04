@@ -11,16 +11,20 @@ private:
 	std::list<GolfCourse> Courses;
 
 public:
-	// bckend
+	// backend
+
 	int init();
 	int run();
 
 	//terminal
-	int addNewRound();
+
+	int addNewRound(GolfCourse& GC);
+	GolfCourse selectCourse();
 
 	//calculations
+
 	double hdcpDiff(int score, double slope, double rating);
 	double hdcpIndex(Personal& user);	// calculates handicap Index based on stored hdcp differentials 
-	double courseHdcp(double hdcpIndex, GolfCourse GC);
+	double courseHdcp(double hdcpIndex, GolfCourse& GC);
 };
 

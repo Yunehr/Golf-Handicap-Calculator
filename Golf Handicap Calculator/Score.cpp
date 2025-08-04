@@ -28,3 +28,8 @@ int Score::getFinalScore()
 {
 	return this->finalScore;
 }
+
+void Score::setFinalScore(int finalScore)
+{
+	this->finalScore = finalScore;
+}
