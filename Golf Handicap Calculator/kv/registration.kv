@@ -1,0 +1,17 @@
+#:kivy 2.3.1
+<RegistrationScreen@Screen>:
+    name: "registration_screen"
+
+    BackgroundLayer:
+
+    MDLabel:
+        text: "Registration"
+        font_style: "H4"
+        halign: "center"
+        pos_hint: {"center_y": 0.8}
+
+    # Back to Login Button
+    MDRaisedButton:
+        text: "Back to Login"
+        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+        on_release: app.login_screen()
