@@ -112,7 +112,19 @@ pip install kivy==2.3.1 kivymd==1.2.0
 ---
 
 ## 📝 Update Logs
+*Last Updated: February 11, 2026*
 
+### [2026-02-13] - Session 2
+**Updates:**
+- Implemented registration UI: responsive `MDCard` layout with `BackgroundLayer`.
+- Added `Username`, `Password`, and `Re-enter Password` fields with input styling.
+- `Register` button now calls `app.home_screen()` to navigate to the home screen.
+- `Back to Login` button now calls `app.login_screen()` to return to the login screen.
+- UI styling: card shadow, dark card color, centered titles and buttons.
+
+**Notes:** Registration screen is currently UI-only; authentication backend not yet implemented.
+
+---
 ### [2026-02-11] - Session 1
 **Fixed Issues:**
 - ✅ Fixed Kivy app window not displaying (missing `run()` call and empty build method)
@@ -132,4 +144,3 @@ pip install kivy==2.3.1 kivymd==1.2.0
 
 ---
 
-*Last Updated: February 11, 2026*

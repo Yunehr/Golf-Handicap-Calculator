@@ -2,8 +2,6 @@
 <HomeScreen@Screen>:
     name: "home_screen"
 
-    BackgroundLayer:
-
     MDLabel:
         text: "Home Screen"
         font_style: "H4"
@@ -15,3 +13,32 @@
         text: "Logout"
         pos_hint: {"center_x": 0.5, "center_y": 0.4}
         on_release: app.login_screen()
+
+
+    NavigationBar:
+
+# Navigation bar Component
+<NavigationBar@BoxLayout>:
+    ## 4 Buttons: Home, Scorecard/Round History, Golf Courses, //(Profile/Account Settings) <-- This one will be implemented in different location>
+    orientation: "horizontal"
+    size_hint_y: None   
+    height: "50dp"
+    padding: "10dp"
+    spacing: "10dp"
+    canvas.before:
+        Color:
+            rgba: utils.get_color_from_hex("#228B22")
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    MDRaisedButton:
+        text: "Scorecard/Round History" 
+        #on_release: app.scorecard_screen()
+    MDRaisedButton:
+        text: "Home"
+        on_release: app.home_screen()
+    MDRaisedButton:
+        text: "Golf Courses"
+        #on_release: app.courses_screen()
+
+

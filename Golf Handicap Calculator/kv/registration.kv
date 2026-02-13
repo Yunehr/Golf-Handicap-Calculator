@@ -4,14 +4,72 @@
 
     BackgroundLayer:
 
-    MDLabel:
-        text: "Registration"
-        font_style: "H4"
-        halign: "center"
-        pos_hint: {"center_y": 0.8}
+    MDCard:
+        orientation: "vertical"
+        size_hint: [0.8, 0.6]
+        pos_hint: {"center_x": 0.5, "center_y": 0.6}
+        padding: "20dp"
+        canvas.before:
+            Color:
+                rgba: utils.get_color_from_hex("#222222")
+            BoxShadow:
+                pos: self.pos
+                size: self.size
+                offset: 15, -15
+                spread_radius: -15, -15
+                border_radius: self.radius
+        BoxLayout:
+            orientation: "vertical"
+            MDLabel:
+                text: "Golf Handicap Calculator"
+                halign: "center"
+                valign: "middle"
+                text_size: self.size
+                font_size: "24sp"
+                bold: True
 
-    # Back to Login Button
-    MDRaisedButton:
-        text: "Back to Login"
-        pos_hint: {"center_x": 0.5, "center_y": 0.4}
-        on_release: app.login_screen()
+            MDLabel: 
+                text: "REGISTRATION"
+                halign: "center"
+                valign: "middle"
+                text_size: self.size
+                bold: True
+                markup: True
+
+        MDTextField:
+            hint_text: "Username"
+            size_hint: [0.8, None]
+            height: "40dp"
+            pos_hint: {"center_x": 0.5}
+        MDTextField:
+            hint_text: "Password"
+            password: True
+            size_hint: [0.8, None]
+            height: "40dp"
+            pos_hint: {"center_x": 0.5}
+        MDTextField:
+            hint_text: "Re-enter Password"
+            password: True
+            size_hint: [0.8, None]
+            height: "40dp"
+            pos_hint: {"center_x": 0.5}
+
+        MDFillRoundFlatButton:
+            text: "Register"
+            font_size: "16sp"
+            size_hint: [0.5, None]
+            height: "40dp"
+            pos_hint: {"center_x": 0.5}
+            md_bg_color: utils.get_color_from_hex("#228B22") ## Forrest Green
+
+            on_press: app.home_screen()
+            
+        MDTextButton: 
+            text: "Back to Login"
+            size_hint: [0.8, None]
+            height: "40dp"
+            pos_hint: {"center_x": 0.5}
+            padding: ["0dp", "10dp", "0dp", "0dp"]
+            
+            on_release: app.login_screen()
+
