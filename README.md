@@ -114,6 +114,18 @@ pip install kivy==2.3.1 kivymd==1.2.0
 ## 📝 Update Logs
 *Last Updated: February 11, 2026*
 
+### [2026-03-03] - Session 3
+**Implemented**
+- Implemented basic user authentication for Login screen
+
+**Updated**
+- Disabled registration button as functionality does not exist yet
+
+**Issues**
+- Navigation bar UI needs a rework, buttons are clickable but UI looks horrendous
+
+
+---
 ### [2026-02-13] - Session 2
 **Updates:**
 - Implemented registration UI: responsive `MDCard` layout with `BackgroundLayer`.

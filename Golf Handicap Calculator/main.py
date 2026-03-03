@@ -5,7 +5,8 @@ from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
 from kivy.factory import Factory
-from auth import check_credentials
+
+from functions import check_credentials
 
 Builder.load_string("""
 #:include kv/login.kv

@@ -61,13 +61,15 @@
             on_press: app.authenticate(username_input.text, password_input.text)
             
         MDTextButton: 
+            disabled: True
+            color: utils.get_color_from_hex("#adadad") ## Greyed out
             text: "Sign Up"
             size_hint: [0.8, None]
             height: "40dp"
             pos_hint: {"center_x": 0.5}
             padding: ["0dp", "10dp", "0dp", "0dp"]
             
-            on_press: app.registration_screen()
+            on_press: app.registration_screen() ##Disabled until functionality is implemented
 
             
 
