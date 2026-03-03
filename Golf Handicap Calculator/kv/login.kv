@@ -37,11 +37,13 @@
                 markup: True
 
         MDTextField:
+            id: username_input
             hint_text: "Username"
             size_hint: [0.8, None]
             height: "40dp"
             pos_hint: {"center_x": 0.5}
         MDTextField:
+            id: password_input
             hint_text: "Password"
             password: True
             size_hint: [0.8, None]
@@ -56,7 +58,7 @@
             pos_hint: {"center_x": 0.5}
             md_bg_color: utils.get_color_from_hex("#228B22") ## Forrest Green
 
-            on_press: app.home_screen()
+            on_press: app.authenticate(username_input.text, password_input.text)
             
         MDTextButton: 
             text: "Sign Up"

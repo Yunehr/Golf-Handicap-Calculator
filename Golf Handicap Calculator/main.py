@@ -5,6 +5,7 @@ from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
 from kivy.factory import Factory
+from auth import check_credentials
 
 Builder.load_string("""
 #:include kv/login.kv
@@ -38,6 +39,21 @@ class GolfHandicap(MDApp):
 
     def home_screen(self):
         self.sm.current = "home_screen"
+    
+    def authenticate(self, username, password):
+        """
+        Authenticate the user with the provided credentials.
+        """
+        if check_credentials(username, password):
+            # Clear the input fields
+            login_screen = self.sm.get_screen("login_screen")
+            login_screen.ids.username_input.text = ""
+            login_screen.ids.password_input.text = ""
+            # Navigate to home screen
+            self.home_screen()
+        else:
+            # Show error message (you can enhance this with a popup later)
+            print("Invalid username or password")
     
 if __name__ == '__main__':
     GolfHandicap().run()

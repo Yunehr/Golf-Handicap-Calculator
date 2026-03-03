@@ -16,12 +16,14 @@
 
 
     NavigationBar:
+        
 
 # Navigation bar Component
 <NavigationBar@BoxLayout>:
     ## 4 Buttons: Home, Scorecard/Round History, Golf Courses, //(Profile/Account Settings) <-- This one will be implemented in different location>
     orientation: "horizontal"
-    size_hint_y: None   
+    size_hint_y: None 
+    pos_hint: {"center_x": 0.5}  
     height: "50dp"
     padding: "10dp"
     spacing: "10dp"
@@ -31,14 +33,26 @@
         Rectangle:
             pos: self.pos
             size: self.size
+    Widget:
+        size_hint_x: 1
     MDRaisedButton:
-        text: "Scorecard/Round History" 
+        text: "A"
+        size_hint_x: None
+        #width: "200dp"
         #on_release: app.scorecard_screen()
     MDRaisedButton:
         text: "Home"
+        size_hint_x: None
+        #width: "100dp"
         on_release: app.home_screen()
     MDRaisedButton:
-        text: "Golf Courses"
+        text: "C"
+        size_hint_x: None
+        #width: "150dp"
+        #on_release: app.courses_screen()
+    Widget:
+        size_hint_x: 1
+        #width: "150dp"
         #on_release: app.courses_screen()
 
 
