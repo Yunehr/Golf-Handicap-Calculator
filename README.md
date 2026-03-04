@@ -112,17 +112,20 @@ pip install kivy==2.3.1 kivymd==1.2.0
 ---
 
 ## 📝 Update Logs
-*Last Updated: February 11, 2026*
+*Last Updated: March 3rd, 2026*
 
 ### [2026-03-03] - Session 3
 **Implemented**
 - Implemented basic user authentication for Login screen
+- Handicap Calculation logic completed (Not tested, not implemented)
+- Golf Course File Handling completed (Not tested, not implemented)
+- Round Score File handling completed (Not tested, not implemented)
 
 **Updated**
 - Disabled registration button as functionality does not exist yet
 
 **Issues**
-- Navigation bar UI needs a rework, buttons are clickable but UI looks horrendous
+>Navigation bar UI needs a rework, buttons are clickable but UI looks horrendous and side buttons go nowhere
 
 
 ---
