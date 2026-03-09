@@ -1,0 +1,64 @@
+#:kivy 2.3.1
+#:include kv/login.kv
+#:include kv/registration.kv
+#:include kv/homepage.kv
+#:include kv/courselist.kv
+#:include kv/scorelist.kv
+#:import utils kivy.utils
+
+MDNavigationLayout:
+
+    ScreenManager:
+        id: screen_manager
+
+        LoginScreen:
+        RegistrationScreen:
+        HomeScreen:
+        CoursesScreen:
+        ScoreCardScreen:
+
+    MDNavigationDrawer:
+        id: account_drawer
+        anchor: "right"
+
+        ScrollView:
+            do_scroll_x: False
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: "20dp"
+                spacing: "20dp"
+
+                # Header row: title + X (mirrors popup style)
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: "40dp"
+                    spacing: "20dp"
+
+                    MDLabel:
+                        text: "Account"
+                        font_style: "H5"
+                        size_hint_x: 1
+
+                    MDIconButton:
+                        icon: "close"
+                        size_hint_x: None
+                        width: "40dp"
+                        on_release: app.root.ids.account_drawer.set_state("close")
+
+                MDLabel:
+                    text: "Username: admin"
+                    font_style: "Subtitle1"
+                    size_hint_y: None
+                    height: "30dp"
+
+                MDRaisedButton:
+                    text: "Delete All Rounds"
+                    on_release: app.delete_all_rounds()
+
+                MDRaisedButton:
+                    text: "Delete All Data"
+                    on_release: app.delete_all_data()

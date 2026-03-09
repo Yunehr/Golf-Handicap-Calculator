@@ -1,25 +1,11 @@
 # Golf Handicap Calculator - Functions
-# This file contains utility functions for the Golf Handicap Calculator app.
 
-## Authentication Function
 def check_credentials(username, password):
-    """
-    Check if the provided credentials are valid.
-    Currently hardcoded for testing. Update this function for proper authentication.
-    
-    Args:
-        username: The username to verify
-        password: The password to verify
-        
-    Returns:
-        True if credentials are valid, False otherwise
-    """
     valid_username = "admin"
     valid_password = "password"
-    
     return username == valid_username and password == valid_password
 
-## Golf Course Class and File Handling
+
 class golfCourse:
     def __init__(self, name, slope, rating, par):
         self.name = name
@@ -27,18 +13,17 @@ class golfCourse:
         self.rating = rating
         self.par = par
 
-    #save course to text file
     def save_course(self):
         with open("courses.txt", "a") as f:
             f.write(f"{self.name},{self.slope},{self.rating},{self.par}\n")
 
-    ##load course from text file (single line)
     def load_course(self, line):
         parts = line.strip().split(',')
         self.name = parts[0]
         self.slope = int(parts[1])
         self.rating = float(parts[2])
         self.par = int(parts[3])
+
 
 def load_courses():
     courses = []
@@ -52,10 +37,16 @@ def load_courses():
         print("No courses found.")
     return courses
 
-## Golf Score Handling
+def delete_courses(self):
+    with open("courses.txt", "w") as f:
+        f.write("")
+    
+
+
 def save_score(course_name, score):
     with open("scores.txt", "a") as f:
         f.write(f"{course_name},{score}\n")
+
 
 def load_scores():
     scores = []
@@ -68,35 +59,88 @@ def load_scores():
         print("No scores found.")
     return scores
 
-## Utils
-## get course info by name
+def delete_scores(self):
+    with open("scores.txt", "w") as f:
+        f.write("")
+    
+
+
+def calculate_round_differential(score, course):
+    rd = (score - course.rating) * 113 / course.slope
+    return round(rd, 1)
+
+
+def calculate_handicap_index(scores):
+    if len(scores) < 5:
+        return 0.0
+
+    diffs = [calculate_round_differential(score, get_course_info(name)) for name, score in scores]
+    diffs.sort()
+
+    if len(diffs) < 10:
+        best = diffs[:len(diffs)]
+        return round(sum(best) / len(best) * 0.96, 1)
+    else:
+        return round(sum(diffs[:10]) / 10 * 0.96, 1)
+
+
+def calculate_course_handicap(handicap_index, course):
+    return round(handicap_index * course.slope / 113)
+
+
 def get_course_info(course_name):
-    courses = load_courses()
-    for course in courses:
+    for course in load_courses():
         if course.name == course_name:
             return course
     return None
 
-## calculate round differential
-def calculate_round_differential(score, course):
-    round_differential = (score - course.rating) * 113 / course.slope
-    return round(round_differential, 1)
 
-## calculate handicap index
-def calculate_handicap_index(scores):
-    if len (scores) < 5:
-        return 0.0  # Not enough scores to calculate a handicap index
-    differentials = [calculate_round_differential(score, get_course_info(course_name)) for course_name, score in scores]
-    differentials.sort()
-    if len(differentials) < 10:
-        best_differentials = differentials[:len(differentials)] # Use the lowest 5 differentials
-        return round(sum(best_differentials) / len(best_differentials) * 0.96, 1)
-    else:
-        return round(sum(differentials[:10]) / 10 * 0.96, 1)
-
-## calculate course handicap
-def calculate_course_handicap(handicap_index, course):
-    course_handicap = handicap_index * course.slope / 113
-    return round(course_handicap) 
+def get_handicap_index():
+    return calculate_handicap_index(load_scores())
 
 
+def display_courses(self):
+    courses_screen = self.root.ids.screen_manager.get_screen("courses_screen")
+    courses = load_courses()
+    handicap_index = get_handicap_index()
+
+    course_list = "\n".join([
+        f"{c.name} - Slope: {c.slope}, Rating: {c.rating}, Par: {c.par}, Course Handicap: {calculate_course_handicap(handicap_index, c)}"
+        for c in courses
+    ])
+
+    courses_screen.ids.course_list.text = course_list if course_list else "No courses available"
+
+
+def display_scores(self):
+    scorecard_screen = self.root.ids.screen_manager.get_screen("scorecard_screen")
+    scores = load_scores()
+
+    score_list = "\n".join([f"{name} - Score: {score}" for name, score in scores])
+    scorecard_screen.ids.score_list.text = score_list if score_list else "No scores available"
+
+
+def validate_score_input(course_name, score_text):
+    if course_name == "--No Course Selected--":
+        return "Please select a valid course"
+
+    if not score_text or not score_text.isdigit():
+        return "Please enter a valid score"
+
+    return None
+
+
+def validate_course_input(course_name, slope_text, rating_text, par_text):
+    if not course_name:
+        return "Please enter a course name"
+
+    if not slope_text or not slope_text.isdigit():
+        return "Please enter a valid slope rating"
+
+    if not rating_text:
+        return "Please enter a valid course rating"
+
+    if not par_text or not par_text.isdigit():
+        return "Please enter a valid par"
+
+    return None

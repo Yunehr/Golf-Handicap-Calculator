@@ -20,7 +20,7 @@ The **Golf Handicap Calculator** is a personal project designed to provide golfe
 **Key Features:**
 - User authentication system (Login/Registration)
 - Clean, modern Material Design interface
-- Cross-platform compatibility (Windows, macOS, Linux)
+- Cross-platform compatibility (Android, IOS, Windows)
 - Responsive screen management
 
 ---
@@ -37,19 +37,25 @@ The **Golf Handicap Calculator** is a personal project designed to provide golfe
 - ✅ Created login screen with Material Design components
 - ✅ Configured screen navigation and ScreenManager
 - 🔄 **In Progress:** Implement Registration screen
-- 🔄 **In Progress:** Implement Home screen
-- 🔄 **In Progress:** User authentication backend
-- ⚠️ **Upcoming:** Golf handicap calculation logic
-- ⚠️ **Upcoming:** Golf Course Storage
-- ⚠️ **Upcoming:** Round Score Storage
+- ✅ Implement Home screen
+- ⚠️ **Upcoming:** User authentication backend
+- ✅ Golf handicap calculation logic
+- ✅ Golf Course Storage
+- ✅ Round Score Storage
 
 ### After Development (Goals)
 - ✨ Full user authentication system
-- ✨ Dashboard for handicap tracking
-- ✨ Round history
-- ✨ Easy access to previously saved Golf Course Info
+- 🔄 Dashboard for handicap tracking (Needs visual Update)
+- ✅ Round history
+- ✅ Easy access to previously saved Golf Course Info
 - ✨ Downloadable mobile app
 - ✨ Cross-platform distribution
+
+### Current Release:
+Version 1.0
+- Core app functionality developed and navigable
+- UI needs proper visual update to increase "visual appeal"
+- User authentication not implemented
 
 ## 💾 Data Storage & Limits
 
@@ -113,6 +119,17 @@ pip install kivy==2.3.1 kivymd==1.2.0
 
 ## 📝 Update Logs
 *Last Updated: March 3rd, 2026*
+### [2026-03-08] - Session 4
+**Completed**
+- V1 of appication
+
+**Implemented**
+- All functions that required UI recieved UI implementation
+- Header bar implemetnation with menu(sidebar) for user info
+
+**Issues**
+- Registration still disabled
+- UI doesnt really look that good yet as V1 is mainly a proof of concept with UI not fully designed
 
 ### [2026-03-03] - Session 3
 **Implemented**

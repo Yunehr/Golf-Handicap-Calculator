@@ -1,89 +1,90 @@
 #:kivy 2.3.1
+
 <LoginScreen@Screen>:
     name: "login_screen"
 
-    BackgroundLayer:
+    FloatLayout:
 
-    MDCard:
-        orientation: "vertical"
-        size_hint: [0.8, 0.6]
-        pos_hint: {"center_x": 0.5, "center_y": 0.6}
-        padding: "20dp"
-        canvas.before:
-            Color:
-                rgba: utils.get_color_from_hex("#222222")
-            BoxShadow:
-                pos: self.pos
-                size: self.size
-                offset: 15, -15
-                spread_radius: -15, -15
-                border_radius: self.radius
-        BoxLayout:
+        # Background fills the entire screen
+        BackgroundLayer:
+            size_hint: 1, 1
+            pos_hint: {"x": 0, "y": 0}
+
+        # Foreground login card
+        MDCard:
             orientation: "vertical"
-            MDLabel:
-                text: "Golf Handicap Calculator"
-                halign: "center"
-                valign: "middle"
-                text_size: self.size
-                font_size: "24sp"
-                bold: True
+            size_hint: [0.8, 0.6]
+            pos_hint: {"center_x": 0.5, "center_y": 0.55}
+            padding: "20dp"
 
-            MDLabel: 
-                text: "SIGN IN"
-                halign: "center"
-                valign: "middle"
-                text_size: self.size
-                bold: True
-                markup: True
+            canvas.before:
+                Color:
+                    rgba: utils.get_color_from_hex("#222222")
+                BoxShadow:
+                    pos: self.pos
+                    size: self.size
+                    offset: 15, -15
+                    spread_radius: -15, -15
+                    border_radius: self.radius
 
-        MDTextField:
-            id: username_input
-            hint_text: "Username"
-            size_hint: [0.8, None]
-            height: "40dp"
-            pos_hint: {"center_x": 0.5}
-        MDTextField:
-            id: password_input
-            hint_text: "Password"
-            password: True
-            size_hint: [0.8, None]
-            height: "40dp"
-            pos_hint: {"center_x": 0.5}
+            BoxLayout:
+                orientation: "vertical"
 
-        MDFillRoundFlatButton:
-            text: "Login"
-            font_size: "16sp"
-            size_hint: [0.5, None]
-            height: "40dp"
-            pos_hint: {"center_x": 0.5}
-            md_bg_color: utils.get_color_from_hex("#228B22") ## Forrest Green
+                MDLabel:
+                    text: "Golf Handicap Calculator"
+                    halign: "center"
+                    valign: "middle"
+                    text_size: self.size
+                    font_size: "24sp"
+                    bold: True
 
-            on_press: app.authenticate(username_input.text, password_input.text)
-            
-        MDTextButton: 
-            disabled: True
-            color: utils.get_color_from_hex("#adadad") ## Greyed out
-            text: "Sign Up"
-            size_hint: [0.8, None]
-            height: "40dp"
-            pos_hint: {"center_x": 0.5}
-            padding: ["0dp", "10dp", "0dp", "0dp"]
-            
-            on_press: app.registration_screen() ##Disabled until functionality is implemented
+                MDLabel:
+                    text: "SIGN IN"
+                    halign: "center"
+                    valign: "middle"
+                    text_size: self.size
+                    bold: True
+                    markup: True
 
-            
+            MDTextField:
+                id: username_input
+                hint_text: "Username"
+                size_hint: [0.8, None]
+                height: "40dp"
+                pos_hint: {"center_x": 0.5}
+
+            MDTextField:
+                id: password_input
+                hint_text: "Password"
+                password: True
+                size_hint: [0.8, None]
+                height: "40dp"
+                pos_hint: {"center_x": 0.5}
+
+            MDFillRoundFlatButton:
+                text: "Login"
+                font_size: "16sp"
+                size_hint: [0.5, None]
+                height: "40dp"
+                pos_hint: {"center_x": 0.5}
+                md_bg_color: utils.get_color_from_hex("#228B22")
+                on_press: app.authenticate(username_input.text, password_input.text)
+
+            MDTextButton:
+                disabled: True
+                color: utils.get_color_from_hex("#adadad")
+                text: "Sign Up"
+                size_hint: [0.8, None]
+                height: "40dp"
+                pos_hint: {"center_x": 0.5}
+                padding: ["0dp", "10dp", "0dp", "0dp"]
+                on_press: app.registration_screen()
 
 <BackgroundLayer@BoxLayout>:
-    orientation: "vertical"
-    BoxLayout:
-        orientation: "vertical"
-        canvas.before:
-            Color:
-                rgba: utils.get_color_from_hex("#32CD32") ## Lime Green
-            RoundedRectangle:
-                pos: self.pos
-                size: self.size
-                radius: [0, 0, 50, 50]
-
-    BoxLayout:
-        orientation: "horizontal"
+    size_hint: 1, 1
+    canvas.before:
+        Color:
+            rgba: utils.get_color_from_hex("#32CD32")
+        Rectangle:
+            pos: self.pos
+            size: self.size

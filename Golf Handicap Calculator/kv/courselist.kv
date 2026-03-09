@@ -1,0 +1,137 @@
+#:kivy 2.3.1
+
+<CoursesScreen@Screen>:
+    name: "courses_screen"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        HeaderBar:
+            id: header
+            title_text: "Courses"
+            show_add: True
+            add_callback: app.show_add_course_popup
+
+        ScrollView:
+            do_scroll_x: False
+
+            MDLabel:
+                id: course_list
+                text: ""
+                markup: True
+                size_hint_y: None
+                height: self.texture_size[1]
+
+        NavigationBar:
+
+
+
+<AddCoursePopup@MDCard>:
+    orientation: "vertical"
+    size_hint: 0.7, None
+    height: "100dp"
+    padding: "20dp"
+    spacing: "5dp"
+
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint_y: None
+        height: "40dp"
+        spacing: "20dp"
+
+        MDLabel:
+            text: "Add Course"
+            font_style: "H5"
+            size_hint_x: 1
+
+        MDIconButton:
+            icon: "close"
+            size_hint_x: None
+            width: "40dp"
+            on_release: app.close_course_popup()
+
+    MDLabel:
+        text: "Course Name:"
+        size_hint_y: None
+        height: "25dp"
+        spacing: "2dp"
+
+    MDTextField:
+        id: course_name_input
+        hint_text: "Enter course name"
+        mode: "rectangle"
+        size_hint_y: None
+        height: "40dp"
+
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint_y: None
+        height: "90dp"
+        spacing: "10dp"
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_x: 0.5
+            spacing: "2dp"
+
+            MDLabel:
+                text: "Slope Rating:"
+                size_hint_y: None
+                height: "20dp"
+
+            MDTextField:
+                id: slope_input
+                hint_text: "Slope"
+                input_filter: "int"
+                mode: "rectangle"
+                size_hint_y: None
+                height: "40dp"
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_x: 0.5
+            spacing: "2dp"
+
+            MDLabel:
+                text: "Course Rating:"
+                size_hint_y: None
+                height: "20dp"
+
+            MDTextField:
+                id: rating_input
+                hint_text: "Rating"
+                input_filter: "float"
+                mode: "rectangle"
+                size_hint_y: None
+                height: "40dp"
+
+    MDLabel:
+        text: "Par:"
+        size_hint_y: None
+        height: "25dp"
+        spacing: "2dp"
+
+    MDTextField:
+        id: par_input
+        hint_text: "Enter par"
+        input_filter: "int"
+        mode: "rectangle"
+        size_hint_y: None
+        height: "40dp"
+
+    BoxLayout:
+        size_hint_y: None
+        height: "40dp"
+        spacing: "10dp"
+
+        Widget:
+            size_hint_x: 1
+
+        MDRaisedButton:
+            text: "Save Course"
+            size_hint_x: None
+            width: "120dp"
+            on_release: app.save_course_from_popup()
+
+        Widget:
+            size_hint_x: 1
