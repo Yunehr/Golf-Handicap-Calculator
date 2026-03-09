@@ -1,0 +1,170 @@
+#:kivy 2.3.1
+#:import utils kivy.utils
+
+<HomeScreen@Screen>:
+    name: "home_screen"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        # HEADER BAR
+        HeaderBar:
+            id: header
+            title_text: "Dashboard"
+
+        # MAIN CONTENT (scrollable)
+        ScrollView:
+            do_scroll_x: False
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: "10dp"
+                spacing: "20dp"
+
+                MDCard:
+                    size_hint: None, None
+                    size: "150dp", "150dp"
+                    pos_hint: {"center_x": 0.5}
+                    elevation: 10
+                    radius: [100,]
+                    md_bg_color: utils.get_color_from_hex("#228B22")
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        padding: "10dp"
+                        spacing: "10dp"
+
+                        MDLabel:
+                            text: "Handicap Index"
+                            font_style: "Subtitle1"
+                            halign: "center"
+                            color: 1, 1, 1, 1
+
+                        MDLabel:
+                            id: handicap_label
+                            text: app.get_user_handicap_index()
+                            font_style: "H4"
+                            halign: "center"
+                            color: 1, 1, 1, 1
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    spacing: "10dp"
+
+                    MDLabel:
+                        text: "Rounds Played:"
+                        font_style: "Subtitle1"
+                        halign: "center"
+                        color: 1, 1, 1, 1
+
+                    MDLabel:
+                        id: rounds_label
+                        text: app.get_user_rounds_played()
+                        font_style: "H4"
+                        halign: "center"
+                        color: 1, 1, 1, 1
+
+                    MDLabel:
+                        text: "Courses Played:"
+                        font_style: "Subtitle1"
+                        halign: "center"
+                        color: 1, 1, 1, 1
+
+                    MDLabel:
+                        id: courses_label
+                        text: app.get_user_courses_played()
+                        font_style: "H4"
+                        halign: "center"
+                        color: 1, 1, 1, 1
+
+                MDRaisedButton:
+                    text: "Logout"
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.login_screen()
+
+        # BOTTOM NAV BAR
+        NavigationBar:
+
+
+# Navigation bar Component
+<NavigationBar@BoxLayout>:
+    orientation: "horizontal"
+    size_hint_y: None
+    height: "50dp"
+    padding: "10dp"
+    spacing: "10dp"
+
+    canvas.before:
+        Color:
+            rgba: utils.get_color_from_hex("#228B22")
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Widget:
+        size_hint_x: 1
+
+    MDRaisedButton:
+        text: "Courses"
+        size_hint_x: None
+        width: "80dp"
+        on_release: app.courses_screen()
+
+    MDRaisedButton:
+        text: "Home"
+        size_hint_x: None
+        width: "80dp"
+        on_release: app.home_screen()
+
+    MDRaisedButton:
+        text: "Scores"
+        size_hint_x: None
+        width: "80dp"
+        on_release: app.scorecard_screen()
+
+    Widget:
+        size_hint_x: 1
+
+
+# Header Component
+<HeaderBar@BoxLayout>:
+    title_text: ""
+    show_add: False
+    add_callback: None
+    orientation: "horizontal"
+    size_hint_y: None
+    height: "50dp"
+    padding: "10dp"
+    spacing: "10dp"
+    
+    canvas.before:
+        Color:
+            rgba: utils.get_color_from_hex("#228B22")
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    MDLabel:
+        id: title_label
+        text: root.title_text
+        font_style: "H5"
+        halign: "left"
+        color: 1, 1, 1, 1
+
+    MDIconButton:
+        icon: "plus"
+        pos_hint: {"center_y": 0.5}
+        theme_text_color: "Custom"
+        text_color: 1, 1, 1, 1
+        opacity: 1 if root.show_add else 0
+        disabled: False if root.show_add else True
+        on_release:
+            root.add_callback() if root.add_callback else None
+
+    MDIconButton:
+        icon: "menu"
+        pos_hint: {"center_y": 0.5}
+        theme_text_color: "Custom"
+        text_color: 1, 1, 1, 1
+        on_release: app.open_account_drawer()
