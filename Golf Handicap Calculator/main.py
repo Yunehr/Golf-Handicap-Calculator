@@ -3,7 +3,6 @@ kivy.require('2.3.1')
 
 from kivymd.app import MDApp
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager
 from kivy.factory import Factory
 from kivy.uix.popup import Popup
 from kivymd.uix.menu import MDDropdownMenu
@@ -18,7 +17,6 @@ class GolfHandicap(MDApp):
         self.score_popup = None
         self.course_popup = None
         self.course_menu = None
-        self.refresh_score_popup_after_course = False
         super().__init__(**kwargs)
 
     def build(self):
@@ -76,29 +74,18 @@ class GolfHandicap(MDApp):
     def show_add_score_popup(self):
         courses = load_courses()
 
-        if not courses:
-            popup_content = Factory.NoCoursesPopup()
-            self.score_popup = Popup(
-                title="Add Score",
-                content=popup_content,
-                size_hint=(0.9, 0.4),
-                auto_dismiss=False,
-                background="",
-                separator_height=0
-            )
-        else:
-            popup_content = Factory.AddScorePopup()
-            self.score_popup = Popup(
-                title="Add Score",
-                content=popup_content,
-                size_hint=(0.9, 0.65),
-                auto_dismiss=False,
-                background="",
-                separator_height=0
-            )
+        popup_content = Factory.AddScorePopup()
+        self.score_popup = Popup(
+            title="Add Score",
+            content=popup_content,
+            size_hint=(0.9, 0.65),
+            auto_dismiss=False,
+            background="",
+            separator_height=0
+        )
 
-            # Build dropdown menu
-            self.build_course_menu(popup_content.ids.course_selector, courses)
+        # Build dropdown menu
+        self.build_course_menu(popup_content.ids.course_selector, courses)
 
         self.score_popup.open()
 
@@ -180,7 +167,6 @@ class GolfHandicap(MDApp):
 
     def show_add_course_popup_from_score(self):
         self.show_add_course_popup()
-        self.refresh_score_popup_after_course = True
 
     def close_course_popup(self):
         if self.course_popup:
@@ -209,9 +195,9 @@ class GolfHandicap(MDApp):
                 new_course.save_course()
                 print(f"Course saved: {course_name}")
 
-                if self.refresh_score_popup_after_course and self.score_popup:
-                    self.refresh_score_popup_after_course = False
+                if self.score_popup:
                     popup_content_score = self.score_popup.content
+                    
                     courses = load_courses()
                     self.build_course_menu(popup_content_score.ids.course_selector, courses)
                     popup_content_score.ids.course_selector.text = course_name

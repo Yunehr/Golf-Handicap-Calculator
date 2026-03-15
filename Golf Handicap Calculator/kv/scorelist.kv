@@ -28,7 +28,7 @@
 <AddScorePopup@MDCard>:
     orientation: "vertical"
     size_hint: 0.9, None
-    height: "480dp"
+    #height: "480dp"
     padding: "20dp"
     spacing: "10dp"
 
@@ -90,53 +90,3 @@
 
         Widget:
             size_hint_x: 1
-
-
-<NoCoursesPopup@MDCard>:
-    orientation: "vertical"
-    size_hint: 0.9, None
-    height: "200dp"
-    padding: "20dp"
-    spacing: "10dp"
-
-    BoxLayout:
-        orientation: "horizontal"
-        size_hint_y: None
-        height: "40dp"
-        spacing: "20dp"
-
-        MDLabel:
-            text: "Add Score"
-            font_style: "H5"
-            size_hint_x: 1
-
-        MDIconButton:
-            icon: "close"
-            size_hint_x: None
-            width: "40dp"
-            on_release: app.close_score_popup()
-
-    MDLabel:
-        text: "No courses available"
-        halign: "center"
-        font_style: "Subtitle1"
-        size_hint_y: 1
-
-    BoxLayout:
-        size_hint_y: None
-        height: "50dp"
-        spacing: "10dp"
-
-        Widget:
-            size_hint_x: 1
-
-        MDRaisedButton:
-            text: "Add Course"
-            size_hint_x: None
-            width: "130dp"
-            on_release: app.show_add_course_popup_from_score()
-
-        Widget:
-            size_hint_x: 1
-
-
