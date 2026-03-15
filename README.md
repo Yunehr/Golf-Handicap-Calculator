@@ -52,7 +52,7 @@ The **Golf Handicap Calculator** is a personal project designed to provide golfe
 - ✨ Cross-platform distribution
 
 ### Current Release:
-Version 1.0
+Version 1.1
 - Core app functionality developed and navigable
 - UI needs proper visual update to increase "visual appeal"
 - User authentication not implemented
@@ -118,7 +118,11 @@ pip install kivy==2.3.1 kivymd==1.2.0
 ---
 
 ## 📝 Update Logs
-*Last Updated: March 3rd, 2026*
+*Last Updated: March 15th, 2026*
+### [2026-03-15] - Session 5
+**BUGFIX**
+- Fixed bug where APplication would crash whenever client tries to save their first course through the add score popup
+
 ### [2026-03-08] - Session 4
 **Completed**
 - V1 of appication
